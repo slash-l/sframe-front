@@ -1,7 +1,10 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
 <head>
+    <meta charset="utf-8">
     <script src="../js/angular.min.js"></script>
+    <script src="helloWorld.js"></script>
+    <link rel="stylesheet" href="../css/demoStyle.css"><link>
 </head>
 <body>
 
@@ -10,5 +13,27 @@
 
 Your name: <input type="text" ng-model="yourname" placeholder="World">
 Hello {{yourname || 'World'}}!
+
+<div ng-controller="UserController">
+
+    <input type="text" ng-model="user.name" />
+    <input type="text" ng-model="user.email" />
+
+    <p>用户名：{{user.name}}</p>
+    <p>邮箱：{{user.email}}</p>
+    <button ng-click="user.subscribe()">确定</button>
+</div>
+
+<div ng-controller="ShowController">
+    <ul>
+        <li ng-repeat="show in shows" ng-class="{subscribe: show.subscribe}">
+            <input type="checkbox" ng-model="show.subscribe">{{show.title}}
+            <span ng-show="show.subscribe">我被选中了</span>
+            <span ng-hide="show.subscribe">没被选中</span>
+            更新于：{{show.updated * 1000 | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </li>
+    </ul>
+</div>
+
 </body>
 </html>
