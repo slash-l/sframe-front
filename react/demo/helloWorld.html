@@ -9,11 +9,81 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="example2"></div>
+    <div id="example3"></div>
+    <div id="example4"></div>
     <script type="text/babel">
+      var style = {
+        color : "red",
+        border : "1px #000 solid",
+      };
+
+      // 4 种方法实现变量功能
+      // 1 ------三元表达式
+      var HelloReact = React.createClass({
+        render: function(){
+          return <h1>hello {this.props.name ? this.props.name : "react"}!{
+            //这是三元表达式
+            }</h1>
+        }
+      });
       ReactDOM.render(
-        <h1>Hello, world!</h1>,
+        <div style={style}><HelloReact name="slash"/></div>,
         document.getElementById('example')
       );
+      //-------------end-----------------
+
+      // 2 ------自定义函数
+      var HelloWorld = React.createClass({
+        getName: function(){
+          if(this.props.name){
+            return this.props.name
+          }else{
+            return "world";
+          }
+        },
+
+        render: function(){
+          return <h1>hello {this.getName()}!</h1>
+        }
+      });
+      ReactDOM.render(
+        <div style={style}><HelloWorld name="mumu"/></div>,
+        document.getElementById('example2')
+      );
+      //-------------end-----------------
+
+      // 3 ------比较运算符
+      var HelloReact = React.createClass({
+        render: function(){
+          return <h1>hello {this.props.name || "react"}!</h1>
+        }
+      });
+      ReactDOM.render(
+        <div style={style}><HelloReact name="liu"/></div>,
+        document.getElementById('example3')
+      );
+      //-------------end-----------------
+
+      // 4 ------函数表达式
+      var HelloReact = React.createClass({
+        render: function(){
+          return <h1>hello {
+            (function (obj){
+              if(obj.props.name)
+                return obj.props.name
+              else
+                return "react"
+            }(this))
+          }</h1>
+        }
+      });
+      ReactDOM.render(
+        <div style={style}><HelloReact name="ivan"/></div>,
+        document.getElementById('example4')
+      );
+      //-------------end-----------------
+
     </script>
   </body>
 </html>

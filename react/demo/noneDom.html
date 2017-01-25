@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div><br>
+    <div id="example2"></div><br>
+    <div id="example3"></div>
+    <script type="text/babel">
+      var style = {
+        color : "red",
+        border : "1px #000 solid",
+      };
+
+      //-------------- 非 dom 属性 dangerouslySetInnerHTML
+      var rawHTML = {
+        __html : "<h1>I am inner html</h1>"
+      };
+      ReactDOM.render(
+        <div style={style} dangerouslySetInnerHTML={rawHTML}></div>,
+        document.getElementById('example')
+      );
+      //----------------------------end
+
+      //--------------- 非 dom 属性 ref
+      var MyComponent = React.createClass({
+      handleClick: function() {
+        // 使用原生的 DOM API 获取焦点
+        this.refs.myInput.focus();
+      },
+      render: function() {
+        //  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs
+        return (
+          <div>
+            <input type="text" ref="myInput" />
+            <input
+              type="button"
+              value="点我输入框获取焦点"
+              onClick={this.handleClick}
+            />
+          </div>
+        );
+      }
+      });
+      ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example2')
+      );
+      //----------------------------end
+
+      //----------------- 非 dom 属性 key
+      var HelloReact2 = React.createClass({
+        render: function(){
+          return  <ul>
+                    <li key="1">1</li>
+                    <li key="2">2</li>
+                    <li key="3">3</li>
+                  </ul>
+        }
+      });
+      ReactDOM.render(
+        <div style={style}><HelloReact2/></div>,
+        document.getElementById('example3')
+      );
+      //----------------------------end
+
+    </script>
+  </body>
+</html>
