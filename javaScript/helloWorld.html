@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello world javaScript</title>
+	<script type="text/javascript" src="helloWorld.js"></script>
+	<script type="text/javascript">
+		function max(a,b){
+			return a>b?a:b;
+		}
+		console.log(max(2,8));
+
+		var func = max;
+		console.log(func(4,5));
+
+		// 可变参数
+		function max1(){
+			var maxValue = arguments[0];
+			for(var i=1;i<arguments.length;i++){
+				maxValue = max(maxValue, arguments[i]);
+			}
+			return maxValue;
+		}
+		console.log(max1(1,2,200,300,12,399));
+		//-------- end
+
+	</script>
+</head>
+<body>
+	hello world javaScript!
+</body>
+</html>
