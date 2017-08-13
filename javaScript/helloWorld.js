@@ -36,3 +36,8 @@ B.prototype = new A();
 var b = new B();
 b.sayHello();
 b.sayHehe();
+
+var myObject = {};
+myObject.name = 'slash';
+myObject['age'] = 11;
+console.log(myObject.name + ' and ' + myObject.age);

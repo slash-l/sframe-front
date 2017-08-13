@@ -1,0 +1,1 @@
+define("$",function(){}),define("_",function(){}),define("B",function(){}),define("Test",function(){});
