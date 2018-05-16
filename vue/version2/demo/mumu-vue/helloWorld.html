@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue 01 demo</title>
+	<script src="js/vue.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			//配置是否允许 vue-devtools 检查代码，方便调试，生产环境中需要设置为 false
+			Vue.config.devtools = true;
+			Vue.config.productionTip = true;
+
+			var vm = new Vue({
+				el: '#div_01',	//制定关联的元素（选择器）
+				data: {	//存储的数据
+					msg: 'Hello World'
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="div_01">
+		<!-- 两对大括号称为模版，用来进行数据的绑定显示在页面中 -->
+		{{msg}}
+	</div>
+</body>
+</html>
